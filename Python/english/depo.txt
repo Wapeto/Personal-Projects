@@ -1,0 +1,33 @@
+\documentclass[]{article}
+\begin{document}
+  \begin{center}
+    \underline{\textbf{Activity report}}
+  \end{center}
+  \vspace*{20 pt}
+
+First name : Joshua
+  \hspace*{200pt}
+  Last name :
+  \newline
+
+  Date : 
+  \hspace*{250pt}
+  Group : 
+  \newline
+
+  Was the activity completed in class or at home? \newline
+  \newline
+  Other students who participated: \newline
+  \newline\newline\newline\newline
+  Activity type (debate, interview, role play, game, video, etc.):
+  \newline\newline\newline\newline
+  Resources used: Where did you find these resources (CRL, internet, etc.)? Please note all websites used: 
+  \newline\newline\newline\newline
+  Why did you choose this activity? How did it help you accomplish your personal goals?
+  \newline\newline\newline\newline
+  How did you prepare for this activity? 
+  \newline\newline\newline\newline
+  Feedback: Why was this activity worth your time? Would you recommend it? What might you change next time to make it more successful? 
+
+
+\end{document}
