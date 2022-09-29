@@ -3,7 +3,7 @@ use std::io;
 
 
 fn main() {
-    c_f_convertor();
+    ownership();
 }
 
 fn other_fun(x:i32, y:&str){
@@ -20,10 +20,7 @@ fn c_f_convertor(){
         .read_line(&mut unit)
         .expect("Failed to read line");
 
-    let mut unit: u8 = unit.trim().parse().expect("This is not a number !");
-    
-
-    println!("You chose {unit}");
+    let unit: u8 = unit.trim().parse().expect("This is not a number !");
 
     println!("Enter the temperature you wish to convert");
 
@@ -43,4 +40,17 @@ fn c_f_convertor(){
     }else {println!("Fuck this shit am out !")}
     let unit_str = if unit == 1 {"C"} else {"F"};
     println!("This equals to {result}°{unit_str}");
+}
+
+
+fn ownership(){
+    let mut s = String::from("Yoooooo");
+
+    s.push_str(", les bitches !");
+
+    take_ownership(s);
+}
+
+fn take_ownership(s: String){
+    println!("{}", s);
 }
