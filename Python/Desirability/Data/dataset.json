@@ -95,6 +95,38 @@
             "religious": "8",
             "patient": "2",
             "artist": "4"
+        },
+        {
+            "sex": "4",
+            "size": "179",
+            "hair_color": "4 2",
+            "eye_color": "5",
+            "sport": "7",
+            "money": "0",
+            "funny": "0",
+            "play_videogame": "0",
+            "possessive": "0",
+            "honesty": "0",
+            "tactile": "0",
+            "religious": "0",
+            "patient": "0",
+            "artist": "0"
+        },
+        {
+            "sex": "4",
+            "size": "179",
+            "hair_color": "2 4",
+            "eye_color": "5",
+            "sport": "7",
+            "money": "6",
+            "funny": "10",
+            "play_videogame": "3",
+            "possessive": "6",
+            "honesty": "10",
+            "tactile": "7",
+            "religious": "4",
+            "patient": "7",
+            "artist": "9"
         }
     ]
 }

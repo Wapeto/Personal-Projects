@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.9.21)  4 OCT 2022 13:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.9.21)  4 OCT 2022 13:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/josh/Documents/Code/Personal-Projects/Python/english/report-2022-09-23.tex
-(/home/josh/Documents/Code/Personal-Projects/Python/english/report-2022-09-23.tex
+**/home/josh/Documents/Code/Personal-Projects/Python/english/reports/report-2022-10-04.tex
+(/home/josh/Documents/Code/Personal-Projects/Python/english/reports/report-2022-10-04.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-04-10> (/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -26,8 +26,8 @@ File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 File: l3backend-pdftex.def 2022-04-14 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count193
 \l__pdf_internal_box=\box50
-) (build/report-2022-09-23.aux)
-\openout1 = `report-2022-09-23.aux'.
+) (build/report-2022-10-04.aux)
+\openout1 = `report-2022-10-04.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 2.
 LaTeX Font Info:    ... okay on input line 2.
@@ -59,7 +59,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--12
 
 
 Overfull \hbox (13.11977pt too wide) in paragraph at lines 13--17
-[]\OT1/cmr/m/n/10 Date : 2022-09-23 |  Group : L1[]MI[]ang[]4 
+[]\OT1/cmr/m/n/10 Date : 2022-10-04 |  Group : L1[]MI[]ang[]4 
  []
 
 
@@ -149,17 +149,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--39
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (build/report-2022-09-23.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (build/report-2022-10-04.aux) ) 
 Here is how much of TeX's memory you used:
  431 strings out of 478238
- 8493 string characters out of 5850456
+ 8517 string characters out of 5850456
  302592 words of memory out of 5000000
  18748 multiletter control sequences out of 15000+600000
  469913 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,5n,38p,223b,140s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,5n,38p,231b,140s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on build/report-2022-09-23.pdf (1 page, 50003 bytes).
+Output written on build/report-2022-10-04.pdf (1 page, 49651 bytes).
 PDF statistics:
  23 PDF objects out of 1000 (max. 8388607)
  13 compressed objects within 1 object stream

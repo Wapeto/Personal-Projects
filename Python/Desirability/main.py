@@ -28,7 +28,11 @@ empty_dict = {
     "tactile":0,
     "religious":0,
     "patient":0,
-    "artist":0
+    "artist":0,
+    "introvert":0,
+    #Long test part
+    "polyglote":0,
+    
 }
 
 questions = {
@@ -45,7 +49,8 @@ questions = {
     "tactile":"Rate on a scale of 1 to 10 how tactile you'd want your partner to be\n",
     "religious":"Rate on a scale of 1 to 10 how religious you'd want your partner to be\n",
     "patient":"Rate on a scale of 1 to 10 how patient you'd want your partner to be\n",
-    "artist":"Rate on a scale of 1 to 10 how much of an artist you want your partner to be\n"
+    "artist":"Rate on a scale of 1 to 10 how much of an artist you want your partner to be\n",
+    "introvert":"Rate on a scale of 1 to 10 how much of an introvert you want your partner to be. 1 would be very introvert, 10 would be very extravert"
 }
 
 
@@ -62,4 +67,6 @@ for k in keys:
 store.save_data(new_dict)
 
 print("Saved !")
+
+print("\nYou have now answered all the questions, would you like to test your desirability ?")
 

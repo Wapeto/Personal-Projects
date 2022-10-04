@@ -1,9 +1,34 @@
 from datetime import date
 import random
 
-with open("report.tex", "r") as file:
+with open("english/report.tex", "r") as file:
     string_list = file.readlines()
     print('Done')
+
+
+time_spent = [
+    "45 minutes",
+    "1 hour", 
+    "30 minutes",
+    "10 minutes",
+    "1 hour and a half",
+    "2 hours"
+]
+
+
+netflix_movies = [
+    "Forest Gump",
+    "Shutter Island"
+]
+
+youtube_video = [
+    "phone tech",
+    "minecraft",
+    "horror stories",
+    "gaming",
+    "scientific discoveries",
+    "baskball"
+]
 
 
 activities = [
@@ -11,7 +36,7 @@ activities = [
     "Video",
     "I talked with someone in english (debate or not)",
     "Read",
-    "I wrote for a bit"
+    f"I wrote for {random.choice(time_spent)} on my computer. I continued writing a story"
 ]
 
 why_activity = [
@@ -41,10 +66,10 @@ participated = "I was the only one"
 activity_type = random.choice(activities)
 if activity_type == "Movie":
     ressources = "Netflix.com"
-    activity = "I watched a movie on Netflix"
+    activity = f"I watched a movie on Netflix called {random.choice(netflix_movies)}"
 elif activity_type == "Video":
     ressources = "Youtube.com"
-    activity = "I watched a video on Youtube"
+    activity = f"I watched a video on Youtube about {youtube_video}"
 
 elif activity_type == "Read":
     ressources = "Games people play"
@@ -74,5 +99,5 @@ string_list[37] = space + "\emph{" + worth_it + '}\n'
 
 print (len(string_list))
 
-with open(f'report-{date.today()}.tex', 'w') as file:
+with open(f'english/reports/report-{date.today()}.tex', 'w') as file:
     file.writelines( string_list )
