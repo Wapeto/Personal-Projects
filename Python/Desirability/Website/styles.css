@@ -1,0 +1,94 @@
+@font-face {
+    font-family: 'Chillax';
+    src:  url('fonts/Chillax-Variable.woff') format('woff'),
+    url('fonts/Chillax-Variable.ttf') format('truetype');
+  }
+
+
+body {  
+    background-color: #9776F5;
+    margin: 0;
+    padding: 0;
+}
+
+#maintitle{
+    color:#FFA600;
+    top: 30;
+    font-size: 71px;
+    font-family: 'Righteous', 'Chillax', Helvetica, sans-serif;
+}
+
+#description{
+    position: relative;
+    font-size: 19px;
+    margin: auto;
+    width: 637px;
+    color: white;
+    font-family: 'Righteous', 'Chillax', Helvetica, sans-serif;
+}
+
+.centered{
+    text-align: center;
+}
+
+#survey_box{
+    position:sticky;
+    background-color: #AFFFAD;
+    border-radius: 35px;
+    width: 434px;
+    height: 434px;
+    display: inline-block;
+    padding: 10px;
+    transition: background-color .5s ease-out 100ms
+}
+
+#test_box{
+    position:sticky;
+    background-color: #FFB5B5;
+    border-radius: 35px;
+    width: 434px;
+    height: 434px;
+    display: inline-block;
+    padding: 10px;
+    transition: background-color .5s ease-out 100ms
+}
+
+#boxes{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 105px;
+    width: 70%;
+    text-align: center;
+}
+
+#survey_img{
+    width: 200px;
+    height: 200px;
+    margin-top: 45px;
+    transition: width 2s height 2s;
+}
+
+#heart_img{
+    width: 200px;
+    height: 200px;
+    margin-top: 45px;
+    transition: width 2s height 2s;
+}
+
+.box_txt{
+    position:static;
+    text-align: center;
+    margin: auto;
+    font-family: 'Righteous', 'Chillax', Helvetica, sans-serif;
+    font-size: 40px;
+    margin-top: 25px;
+}
+
+#survey_box:hover{
+    background-color: #88eaf7;
+}
+
+#test_box:hover{
+    background-color: #fffab5;
+}

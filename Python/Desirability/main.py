@@ -32,7 +32,7 @@ empty_dict = {
     "introvert":0,
     #Long test part
     "polyglote":0,
-    
+    "intelligence":0
 }
 
 questions = {
@@ -50,7 +50,9 @@ questions = {
     "religious":"Rate on a scale of 1 to 10 how religious you'd want your partner to be\n",
     "patient":"Rate on a scale of 1 to 10 how patient you'd want your partner to be\n",
     "artist":"Rate on a scale of 1 to 10 how much of an artist you want your partner to be\n",
-    "introvert":"Rate on a scale of 1 to 10 how much of an introvert you want your partner to be. 1 would be very introvert, 10 would be very extravert"
+    "introvert":"Rate on a scale of 1 to 10 how much of an introvert you want your partner to be. 1 would be very introvert, 10 would be very extravert\n",
+    "polyglote":"Rate on a scale of 1 to 10 how important it is for you that your partner speaks multiple languages\n",
+    "intelligence":"Rate on a scale of 1 to 10 how intelligent you'd want your partner to be\n"
 }
 
 
