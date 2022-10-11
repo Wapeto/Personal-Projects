@@ -1,0 +1,158 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;  
+    font-family: 'Righteous', 'Chillax', Helvetica, sans-serif;
+
+}
+
+@font-face {
+    font-family: 'Chillax';
+    src:  url('fonts/Chillax-Variable.woff') format('woff'),
+    url('fonts/Chillax-Variable.ttf') format('truetype');
+  }
+
+
+body {  
+    background-color: #9776F5;
+    margin: 0;
+    padding: 0;
+    display: block;
+    text-align: center;
+    align-items: center;
+}
+
+#maintitle{
+    position: relative;
+    color:#FFA600;
+    padding: 2.5% 0 1.5% 0;
+    margin: auto;
+    width: 100%;
+    font-size: 3.5em;
+    font-family: 'Righteous', 'Chillax', Helvetica, sans-serif;
+}
+
+#description{
+    position: relative;
+    font-size: 1.5em;
+    margin: auto;
+    width: 35vw;
+    color: white;
+    font-family: 'Righteous', 'Chillax', Helvetica, sans-serif;
+}
+
+.centered{
+    text-align: center;
+    align-items: center;
+}
+
+
+
+#boxes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 6% 0 0 0;
+}
+
+#survey_box{
+    position:relative;
+    background-color: #AFFFAD;
+    border-radius: 35px;
+    width: 27vw;
+    height: 45vh;
+    margin: 0 5%;
+    transition: background-color .5s ease-out 100ms;
+    padding: 5px;
+}
+
+#test_box{
+    position:relative;
+    background-color: #FFB5B5;
+    border-radius: 35px;
+    width: 27vw;
+    height: 45vh;
+    margin: 0 5%;
+    transition: background-color .5s ease-out 100ms;
+    padding: 5px;
+}
+
+
+#survey_img{
+    width: 10vw;
+    transition: width 2s height 2s;
+}
+
+#heart_img{
+    width: 10vw;
+    transition: width 2s height 2s;
+}
+
+.box_txt{
+    text-align: center;
+    font-family: 'Righteous', 'Chillax', Helvetica, sans-serif;
+    font-size: 2em;
+    margin-top: 25px;
+}
+
+#survey_box:hover{
+    background-color: #88eaf7;
+}
+
+#test_box:hover{
+    background-color: #fffab5;
+}
+
+.button{
+    border-style: hidden;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: bold;
+    text-align: centered;
+}
+
+#survey_btn{
+    width: 40%;
+    height: 18%;
+    border: 2px solid;
+    border-radius: 7px;
+    border-color: #3e5e3d;
+    margin: 8% 0 0 0;
+    font-size: 3em;
+    background-color: transparent;
+    transition: background-color .5s ease-out 100ms, color .5s ease-out, border-color .5s ease-out
+
+}
+
+#test_btn{
+    width: 40%;
+    height: 18%;
+    border: 2px solid;
+    border-radius: 7px;
+    border-color: #855a5a;
+    margin: 8% 0 0 0;
+    font-size: 3em;
+    background-color: transparent;
+    transition: background-color .5s ease-out 100ms, color .5s ease-out, border-color .5s ease-out
+
+}
+
+#survey_box:hover #survey_btn{
+    border-color: #578a91;
+}
+
+#survey_btn:hover{
+    background-color: #578a9194;
+    color:white;
+}
+
+#test_box:hover #test_btn{
+    border-color: #a8a573;
+}
+
+#test_btn:hover{
+    background-color: #a8a573;
+    color:white;
+}

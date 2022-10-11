@@ -1,0 +1,113 @@
+@font-face {
+    font-family: 'Chillax';
+    src:  url('fonts/Chillax-Variable.woff') format('woff'),
+    url('fonts/Chillax-Variable.ttf') format('truetype');
+}
+
+*{
+    font-family: 'Righteous', 'Chillax', Helvetica, sans-serif;
+    text-align: center;
+}
+
+body {
+    background-color:#9776F5;
+}
+
+#main_title{
+    color: #FFA600;
+    width: 100%;
+    margin: auto;
+    font-size: 4em;
+}
+
+#instructions{
+    color: white;
+    width: 35vw;
+    margin: 2% auto;
+    font-size: 1.1em;
+}
+
+#question_lst{
+    list-style: none;
+    font-size: 1.4em;
+}
+
+.question{
+    display: flex;
+    background-color: #7055BE;
+    border-radius: 20px;
+    margin: 1.5% 13%;
+    color: white;
+}
+.checkbox + label{
+    margin:auto 8% auto 2%;
+}
+
+.checkbox.sex{
+    width: 1.8%;
+}
+
+#hight_sldr{
+    width: 38%;
+    color: #7055BE;
+    background-color: #7055BE;
+}
+
+#mul_tip{
+    font-size: .7em;
+    margin: auto 2%;
+}
+
+#tip_img{
+    width: 2vw;
+    height:2vw;
+    z-index: 1;
+    margin: 0 0 0 3vw;
+}
+
+.modal{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    font-size: .8em;
+    left: 53%;
+    top:47%;
+    border-radius: 10px;
+    width: 29%; /* Full width */
+    height: 7.5%; /* Full height */
+    overflow:auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+
+.tip:hover + .modal{
+    display: block;
+}
+
+.select {
+    width: 100%;
+    min-width: 15ch;
+    max-width: 30ch;
+    /* border: 1px solid var(--select-border); */
+    border-style: none;
+    border-radius: 0.25em;
+    padding: 0.25em 0.5em;
+    font-size: 1.25rem;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #7055BE;
+    background-image: linear-gradient(to top, #7055BE, #7055BE 33%);
+    color:white;
+}
+
+select[multiple] option {
+    border: 1px solid;
+    border-color: rgb(196, 160, 255);
+    border-radius: .5rem;
+}
+
+select[multiple] option:checked {
+    background-color: #49377e;
+    color: rgb(196, 160, 255);
+    border-color: #351b81;
+}

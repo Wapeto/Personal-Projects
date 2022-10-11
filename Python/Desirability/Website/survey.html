@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="survey_styles.css">
+    <title>Desirability-Survey</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+    <h1 id="main_title">Survey</h1>
+    <p id="instructions">You will have to answer a series of questions about
+        how you’d like your “perfect partner” to be. 
+        Be as honnest as you can, this survey is 100% anonymous.</p>
+
+    <div id="questions">
+        <ul id="question_lst">
+            <li id="qu_sex" class="question">
+                <p style="text-align: left; margin-left: 3%; margin-right:8%;">Are you interested in : </p>
+                <input type="checkbox" id="men_chkb" class="checkbox sex" name="Men">
+                    <label for="Men" class="label">Men</label>
+                <input type="checkbox" id="women_chkb" class="checkbox sex" name="Women">
+                    <label for="Women" class="label">Women</label>
+                <input type="checkbox" id="other_chkb" class="checkbox sex"  name="Other">
+                    <label for="Other" class="label">Other</label>
+            </li>
+            <li id="qu_height" class="question">
+                <p style="text-align: left; margin-left: 3%; margin-right:8%;">What is your ideal hight for a partner :</p>
+                <input type="range" name="hight" id="hight_sldr" class="slider" min="100" max="230" oninput="rangeValue.innerText = this.value">
+                <p id="rangeValue" style="margin: auto 2%;">100</p>
+            </li>
+
+            <li id="qu_haircol" class="question">
+                <p style="text-align: left; margin: 3vw 0 0 3%;" id="haircol_txt">What is your favorite hair color for a partner :</p>
+                <select name="hair_colors" id="haircol_slct" class="select" multiple>
+                    <option value="black">Black</option>
+                    <option value="brown">Brown</option>
+                    <option value="blond">Blond</option>
+                    <option value="chestnut">Chestnut</option>
+                    <option value="red">Red</option>
+                    <option value="other">Other</option>
+                </select>
+                <img src="images/tip.png" alt="Tip" id="tip_img" class="tip">
+                <div id="modaltip1" class="modal">
+                    <p>Use 'CTRL' and click to select multiple colors</p>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</body>
+</html>
