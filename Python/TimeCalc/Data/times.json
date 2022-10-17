@@ -26,9 +26,9 @@
             "timeSpent": 50
         },
         {
-            "name": "Shower",
-            "type": "Task",
-            "timeSpent": 720
+            "name": "HDF-Home",
+            "type": "Trip",
+            "timeSpent": 138.0
         }
     ]
 }
