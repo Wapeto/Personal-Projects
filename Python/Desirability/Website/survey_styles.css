@@ -26,6 +26,14 @@ body {
     margin: 2% auto;
     font-size: 1.1em;
 }
+.question_txt{
+    position: relative;
+}
+
+#questions{
+    display: flex;
+    flex-direction: column;
+}
 
 #question_lst{
     list-style: none;
@@ -34,9 +42,10 @@ body {
 
 .question{
     display: flex;
+    position: relative;;
     background-color: #7055BE;
     border-radius: 20px;
-    margin: 1.5% 13%;
+    margin: 1.5% 9%;
     color: white;
 }
 .checkbox + label{
@@ -62,19 +71,19 @@ body {
     width: 2vw;
     height:2vw;
     z-index: 1;
-    margin: 0 0 0 3vw;
+    /* margin: 0 0 0 3vw; */
 }
 
 .modal{
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
+    position: absolute; /* Stay in place */
     z-index: 1; /* Sit on top */
     font-size: .8em;
     left: 53%;
-    top:47%;
+    top:35%;
     border-radius: 10px;
-    width: 29%; /* Full width */
-    height: 7.5%; /* Full height */
+    width: 440px; /* Full width */
+    height: 65px; /* Full height */
     overflow:auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
@@ -88,7 +97,6 @@ body {
     width: 100%;
     min-width: 15ch;
     max-width: 30ch;
-    /* border: 1px solid var(--select-border); */
     border-style: none;
     border-radius: 0.25em;
     padding: 0.25em 0.5em;
@@ -110,4 +118,9 @@ select[multiple] option:checked {
     background-color: #49377e;
     color: rgb(196, 160, 255);
     border-color: #351b81;
+}
+
+
+#chkb_slct{
+    list-style: none;
 }

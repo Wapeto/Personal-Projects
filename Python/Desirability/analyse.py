@@ -60,8 +60,7 @@ def sort(lst):
     for i in range(len(n_lst)-1):
         if n_lst[i][1] < n_lst[i+1][1]:
             n_lst[i], n_lst[i+1] = n_lst[i+1], n_lst[i]
-    # if n_lst[0][1] < n_lst[1][1]:
-    #     n_lst[0], n_lst[1] = n_lst[1],n_lst[0]
+            
     lst = []
     for i in range(len(n_lst)):
         lst.append(n_lst[i][0])
@@ -173,11 +172,6 @@ def get_stats():
 
     # print(f"The sport tendency for men is {tendencies_m['sport']}")
     # print(f"The sport tendency for women is {tendencies_f['sport']}")
-
-
-
-
-
 
 
 

@@ -1,0 +1,34 @@
+{
+    "times": [
+        {
+            "name": "Universite-HDF",
+            "type": "Trip",
+            "timeSpent": 390
+        },
+        {
+            "name": "Dishes",
+            "type": "Chores",
+            "timeSpent": 1380
+        },
+        {
+            "name": "Dishes",
+            "type": "Chores",
+            "timeSpent": 1080
+        },
+        {
+            "name": "Dishes",
+            "type": "Chores",
+            "timeSpent": 900
+        },
+        {
+            "name": "Roll Cigarette",
+            "type": "Activity",
+            "timeSpent": 50
+        },
+        {
+            "name": "Shower",
+            "type": "Task",
+            "timeSpent": 720
+        }
+    ]
+}

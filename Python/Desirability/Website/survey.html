@@ -15,34 +15,51 @@
     <div id="questions">
         <ul id="question_lst">
             <li id="qu_sex" class="question">
-                <p style="text-align: left; margin-left: 3%; margin-right:8%;">Are you interested in : </p>
+                <p style="text-align: left; margin-left: 3%; margin-right:8%;" class="question_txt">Are you interested in : </p>
                 <input type="checkbox" id="men_chkb" class="checkbox sex" name="Men">
-                    <label for="Men" class="label">Men</label>
+                    <label for="men_chkb" class="label">Men</label>
                 <input type="checkbox" id="women_chkb" class="checkbox sex" name="Women">
-                    <label for="Women" class="label">Women</label>
-                <input type="checkbox" id="other_chkb" class="checkbox sex"  name="Other">
-                    <label for="Other" class="label">Other</label>
+                    <label for="women_chkb" class="label">Women</label>
+                <input type="checkbox" id="othersex_chkb" class="checkbox sex"  name="Other">
+                    <label for="othersex_chkb" class="label">Other</label>
             </li>
             <li id="qu_height" class="question">
-                <p style="text-align: left; margin-left: 3%; margin-right:8%;">What is your ideal hight for a partner :</p>
+                <p style="text-align: left; margin-left: 3%; margin-right:8%;" class="question_txt">What is your ideal hight for a partner :</p>
                 <input type="range" name="hight" id="hight_sldr" class="slider" min="100" max="230" oninput="rangeValue.innerText = this.value">
                 <p id="rangeValue" style="margin: auto 2%;">100</p>
             </li>
 
             <li id="qu_haircol" class="question">
-                <p style="text-align: left; margin: 3vw 0 0 3%;" id="haircol_txt">What is your favorite hair color for a partner :</p>
-                <select name="hair_colors" id="haircol_slct" class="select" multiple>
+                <p style="text-align: left; margin-left: 3%; margin-right: 8%;" id="haircol_txt" class="question_txt">What is your favorite hair color for a partner :</p>
+                <!-- <select name="hair_colors" id="haircol_slct" class="select" multiple>
                     <option value="black">Black</option>
                     <option value="brown">Brown</option>
                     <option value="blond">Blond</option>
                     <option value="chestnut">Chestnut</option>
                     <option value="red">Red</option>
                     <option value="other">Other</option>
-                </select>
-                <img src="images/tip.png" alt="Tip" id="tip_img" class="tip">
+                </select> -->
+                <ul id="chkb_slct">
+                    <li>
+                        <input type="checkbox" id="black_chkb" class="checkbox" name="black">
+                            <label for="black_chkb">Black</label>
+                        <input type="checkbox" id="brown_chkb" class="checkbox" name="brown">
+                            <label for="brown_chkb">Brown</label>
+                        <input type="checkbox" id="blond_chkb" class="checkbox" name="blond">
+                            <label for="blond_chkb">Blond</label>
+                        <input type="checkbox" id="chest_chkb" class="checkbox" name="chestnut">
+                            <label for="chest_chkb">Chestnut</label>
+                        <input type="checkbox" id="red_chkb" class="checkbox" name="red">
+                            <label for="red_chkb">Red</label>
+                        <input type="checkbox" id="otherhair_chkb" class="checkbox" name="other">
+                            <label for="otherhair_chkb">Other</label>
+                    </li>
+                </ul>
+
+                <!-- <img src="images/tip.png" alt="Tip" id="tip_img" class="tip">
                 <div id="modaltip1" class="modal">
                     <p>Use 'CTRL' and click to select multiple colors</p>
-                </div>
+                </div> -->
             </li>
 
         </ul>
