@@ -1,34 +1,29 @@
 {
     "times": [
         {
-            "name": "Universite-HDF",
-            "type": "Trip",
-            "timeSpent": 390
+            "type": "Trip-Tram",
+            "name": "University-HDF",
+            "timeSpent": 390.0
         },
         {
-            "name": "Dishes",
-            "type": "Chores",
-            "timeSpent": 1380
-        },
-        {
-            "name": "Dishes",
-            "type": "Chores",
-            "timeSpent": 1080
-        },
-        {
-            "name": "Dishes",
-            "type": "Chores",
-            "timeSpent": 900
-        },
-        {
-            "name": "Roll Cigarette",
-            "type": "Activity",
+            "type": "Task",
+            "name": "roll cigarette",
             "timeSpent": 50
         },
         {
+            "type": "Trip-Skate",
             "name": "HDF-Home",
-            "type": "Trip",
-            "timeSpent": 138.0
+            "timeSpent": 138
+        },
+        {
+            "type": "Trip-Tram",
+            "name": "HDF-University",
+            "timeSpent": 450.0
+        },
+        {
+            "type": "Trip-Tram",
+            "name": "HDF-University",
+            "timeSpent": 540
         }
     ]
 }

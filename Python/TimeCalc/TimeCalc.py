@@ -1,28 +1,9 @@
 import json
 import os
+from BuildTime import *
 
 
-class Time:
-    def __init__(self, name, type, timeSpent, unit='s'):
-        self.name = name
-        self.type = type
-        self.timeSpent = timeSpent
-        if self.timeSpent.isdigit():
-            self.timeSpent = int(timeSpent) if unit == 's' else int(
-            timeSpent)*60 if unit == 'm' else int(timeSpent)*3600 if unit == 'h' else 0
-        else:
-            if unit == 'h':
-                self.timeSpent = float(self.timeSpent) * 3600
-            elif unit == 'm':
-                self.timeSpent = float(self.timeSpent) * 60
-            else : self.timeSpent = float(timeSpent)
-        self.unit = unit
-
-    def __str__(self):
-        return f"{self.name} : {self.type} --> {self.timeSpent} seconds"
-
-
-def inputNewTime():
+def inputNewTime() -> Time: 
     print("Please enter a new time: ")
     name = input("Name of the input: ")
     type = input("Type of time: ")
@@ -37,8 +18,8 @@ def saveTime(Time):
     with open('/home/josh/Documents/Code/Personal-Projects/Python/TimeCalc/Data/times.json', 'r+') as file:
         # Create a dictionary with the object's data
         data = {}
-        data['name'] = Time.name
         data['type'] = Time.type
+        data['name'] = Time.name
         data['timeSpent'] = Time.timeSpent
 
         # First we load existing data into a dict.
@@ -54,85 +35,83 @@ def saveTime(Time):
         json.dump(times_data, file, indent=4)
 
 
-def retrieveTime(name="", type=""):
+def retrieveTime(name="", type=""):#TODO: split name and check if name in name
     with open('/home/josh/Documents/Code/Personal-Projects/Python/TimeCalc/Data/times.json') as json_file:
         times = json.load(json_file)
 
     list = []
-    for t in times["times"]:
-        if name != "" and type != "":
-            if t["name"] == name and t["type"] == type:
-                time = Time(t["name"], t["type"], t["timeSpent"])
-                list.append(time)
-        elif name == t["name"]:
-            time = Time(t["name"], t["type"], t["timeSpent"])
-            list.append(time)
-        elif type == t["type"]:
-            time = Time(t["name"], t["type"], t["timeSpent"])
-            list.append(time)
+    name = name.split('-')
+    if len(name) == 2:
+        for t in times["times"]:
+            if name[0] in t["name"] or name[1] in t["name"] and 'Trip' in t["type"]:
+                list.append(t["timeSpent"])
+    else:
+        for t in times["times"]:
+            if name != "" and type != "":
+                if t["name"] == name and t["type"] == type:
+                    list.append(t["timeSpent"])
+            elif name == t["name"]:
+                list.append(t["timeSpent"])
+            elif type == t["type"]:
+                list.append(t["timeSpent"])
+
     return list
 
 
 def averageTime(time_lst):
     total = 0
     for t in time_lst:
-        total += int(t.timeSpent)
-    return round(total / len(time_lst), 1)
+        total += t
+    res = round(total / len(time_lst), 1)
+    #TODO: implement the unit converter and the return
+    return unitConverter(res)
 
 
-def formatTime(time):
-    possible = True
-    if time > 86400:
-        time /= 86400
-        unit = "days"
-    elif time > 3600:
-        time /= 3600
-        unit = "hours"
-    elif time > 60:
-        time /= 60
-        unit = "minutes"
-    time = round(time, 1)
-    return time, unit
+def unitConverter(value):
+    if value > 3600:
+        intPart = int(value // 3600)
+        decPart = str(value % 3600)[:2]
+        unit = 'hours'
+    elif value > 60:
+        intPart = int(value // 60)
+        decPart = str(value % 3600)[:2]
+        unit ='minutes'
+    return f"{intPart}.{decPart} {unit}"
 
 
-def finalTime(name="", type=""):
-    times_lst = retrieveTime(name, type)
-    if len(times_lst) > 1:
-        time = averageTime(times_lst)
-    else:
-        time = times_lst[0].timeSpent
 
-    time, unit = formatTime(time)
-
-    # obj = Time(name, type if type != "" else times_lst[0].type, comp_time, unit)
-    print(f"{name} : {type} --> {time} {unit}")
+def getAverageTime(type='', name=''):
+    return averageTime(retrieveTime(name, type))
 
 
-# *! Create a new time object and save it
+#*! Create a new time object and save it
 # test = inputNewTime()
 # saveTime(test)
 
 
-# *!         MAIN FUNCTION
+#*!             MAIN FUNCTION
 
-def main():
+def main():#TODO: add pick lists instead of number inputs
     a = input("Do you want to add a new time or get time information ? (1-2)\n")
     if a == "1":
-        time = inputNewTime()
+        time = buildNewTime()
         saveTime(time)
 
     elif a == "2":
         b = input("Do you wish to search by name, type, or both ? (1-2-3)\n")
         if b == "1":
             name = input("Name: ")
-            finalTime(name=name)
+            avTime = getAverageTime(name=name)
+            print(f"The average time for {name} is {avTime}")
         elif b == "2":
             type = input("Type: ")
-            finalTime(type=type)
+            avTime = getAverageTime(type=type)
+            print(f"The average time for {type} is {avTimes}")
         elif b == "3":
             name = input("Name: ")
             type = input("Type: ")
-            finalTime(name=name, type=type)
+            avTime = getAverageTime(name=name, type=type)
+            print(f"The average time for {type} : {name} is {avTimes}")
         else:
             print("Wrong input")
             main()
