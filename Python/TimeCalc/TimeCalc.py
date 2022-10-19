@@ -59,7 +59,7 @@ def retrieveTime(name="", type="") -> list:
     else:
         for t in times["times"]:
             if name != [""] and type != "":
-                if t["name"] == name and t["type"] == type:
+                if t["name"] == name[0] and t["type"] == type:
                     list.append(t["timeSpent"])
             elif name == t["name"]:
                 print('name match')
@@ -125,10 +125,10 @@ def main():
             avTime = getAverageTime(type=type)
             print(f"The average time for {type} is {avTime}")
         elif b == 2:
-            name = input("Name: ")
             type = input("Type: ")
+            name = input("Name: ")
             avTime = getAverageTime(name=name, type=type)
-            print(f"The average time for {type} : {name} is {avTimes}")
+            print(f"The average time for {type} : {name} is {avTime}")
         elif b == 3:
             main()
         else:
