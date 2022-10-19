@@ -1,6 +1,8 @@
 import json
 import os
 from BuildTime import *
+from pick import pick
+
 
 
 def inputNewTime() -> Time: 
@@ -35,7 +37,16 @@ def saveTime(Time):
         json.dump(times_data, file, indent=4)
 
 
-def retrieveTime(name="", type=""):#TODO: split name and check if name in name
+def retrieveTime(name="", type="") -> list:
+    """gets the list if times that correspond to the name or type specified
+
+    Args:
+        name (str, optional): name of the time data. Defaults to "".
+        type (str, optional): type of the time data. Defaults to "".
+
+    Returns:
+        list: list of times
+    """
     with open('/home/josh/Documents/Code/Personal-Projects/Python/TimeCalc/Data/times.json') as json_file:
         times = json.load(json_file)
 
@@ -63,7 +74,6 @@ def averageTime(time_lst):
     for t in time_lst:
         total += t
     res = round(total / len(time_lst), 1)
-    #TODO: implement the unit converter and the return
     return unitConverter(res)
 
 
@@ -91,23 +101,26 @@ def getAverageTime(type='', name=''):
 
 #*!             MAIN FUNCTION
 
-def main():#TODO: add pick lists instead of number inputs
-    a = input("Do you want to add a new time or get time information ? (1-2)\n")
-    if a == "1":
+def main():
+    # a = input("Do you want to add a new time or get time information ? (1-2)\n")
+    sel, a = pick(['Enter new Time data', 'Search for a Time'], "What do you want to do ?", indicator=">>")
+    if a == 0:
         time = buildNewTime()
         saveTime(time)
 
-    elif a == "2":
-        b = input("Do you wish to search by name, type, or both ? (1-2-3)\n")
-        if b == "1":
+    elif a == 1:
+        # b = input("Do you wish to search by name, type, or both ? (1-2-3)\n")
+        sel, b = pick(['Name', 'Type', 'Both'], "What type of search do you want to do ?", indicator=">>")
+
+        if b == 0:
             name = input("Name: ")
             avTime = getAverageTime(name=name)
             print(f"The average time for {name} is {avTime}")
-        elif b == "2":
+        elif b == 1:
             type = input("Type: ")
             avTime = getAverageTime(type=type)
             print(f"The average time for {type} is {avTimes}")
-        elif b == "3":
+        elif b == 2:
             name = input("Name: ")
             type = input("Type: ")
             avTime = getAverageTime(name=name, type=type)
@@ -120,6 +133,7 @@ def main():#TODO: add pick lists instead of number inputs
         print("Please enter 1 or 2")
         main()
     print('\n')
+    input()
     main()
 
 

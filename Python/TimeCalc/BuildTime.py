@@ -8,22 +8,16 @@ class Time:
         self.type = type
         self.name = name
         self.timeSpent = timeSpent
-        # if self.timeSpent.isdigit():
-        #     self.timeSpent = int(timeSpent) if unit == 's' else int(
-        #         timeSpent)*60 if unit == 'm' else int(timeSpent)*3600 if unit == 'h' else 0
-        # else:
-        #     if unit == 'h':
-        #         self.timeSpent = float(self.timeSpent) * 3600
-        #     elif unit == 'm':
-        #         self.timeSpent = float(self.timeSpent) * 60
-        #     else:
-        #         self.timeSpent = float(timeSpent)
-        # self.unit = unit
 
     def __str__(self):
         return f"{self.type} : {self.name} --> {self.timeSpent} seconds"
 
-def buildNewTime():
+def buildNewTime() -> Time:
+    """This function asks the user input to build a new time
+
+    Returns:
+        Time: returns a new time object with the user's input
+    """
     itinerary = ''
     task = ''
     chore = ''
@@ -136,10 +130,17 @@ def buildNewTime():
 
     return Time(type, fValue, time)
 
-# val = buildNewTime()
-# print(val)
 
-def timeConvert(val:str, unit:str):
+def timeConvert(val:str, unit:str) -> int:
+    """Converts a time in hours or minutes to seconds
+
+    Args:
+        val (str): string value of the time
+        unit (str): time unit
+
+    Returns:
+        int: The time in seconds
+    """
     if val.isdigit():
         val = int(val)
     else:
