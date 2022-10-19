@@ -24,6 +24,11 @@
             "type": "Trip-Tram",
             "name": "HDF-University",
             "timeSpent": 540
+        },
+        {
+            "type": "a",
+            "name": "test",
+            "timeSpent": 2345
         }
     ]
 }

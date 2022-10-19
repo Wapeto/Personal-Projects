@@ -25,7 +25,7 @@ def buildNewTime() -> Time:
     type = ''
 
     selected, index = pick(['1.Trip', '2.Task', '3.Chores',
-                           '4.Other'], "What type of Time is it ?", indicator=">>")
+                           '4.Other', 'Back'], "What type of Time is it ?", indicator=">>")
     if index == 0:  # Trip
         type = 'Trip'
         placeA = ''
@@ -110,6 +110,8 @@ def buildNewTime() -> Time:
         type = 'Chore'
 
         chore = input("Enter the name of the chore :\n").lower()
+    elif index == 4: #Back
+        return 'back'
 
     if itinerary != '':
         fValue =  itinerary

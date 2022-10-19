@@ -58,10 +58,11 @@ def retrieveTime(name="", type="") -> list:
                 list.append(t["timeSpent"])
     else:
         for t in times["times"]:
-            if name != "" and type != "":
+            if name != [""] and type != "":
                 if t["name"] == name and t["type"] == type:
                     list.append(t["timeSpent"])
             elif name == t["name"]:
+                print('name match')
                 list.append(t["timeSpent"])
             elif type == t["type"]:
                 list.append(t["timeSpent"])
@@ -78,6 +79,9 @@ def averageTime(time_lst):
 
 
 def unitConverter(value):
+    intPart = 0
+    decPart = 0
+    unit = ''
     if value > 3600:
         intPart = int(value // 3600)
         decPart = str(value % 3600)[:2]
@@ -103,14 +107,14 @@ def getAverageTime(type='', name=''):
 
 def main():
     # a = input("Do you want to add a new time or get time information ? (1-2)\n")
-    sel, a = pick(['Enter new Time data', 'Search for a Time'], "What do you want to do ?", indicator=">>")
+    sel, a = pick(['Enter new Time data', 'Search for a Time', 'Exit'], "What do you want to do ?", indicator=">>")
     if a == 0:
-        time = buildNewTime()
+        time = buildNewTime() if buildNewTime() != 'back' else main()
         saveTime(time)
 
     elif a == 1:
         # b = input("Do you wish to search by name, type, or both ? (1-2-3)\n")
-        sel, b = pick(['Name', 'Type', 'Both'], "What type of search do you want to do ?", indicator=">>")
+        sel, b = pick(['1.Name', '2.Type', '3.Both', 'Back'], "What type of search do you want to do ?", indicator=">>")
 
         if b == 0:
             name = input("Name: ")
@@ -119,15 +123,19 @@ def main():
         elif b == 1:
             type = input("Type: ")
             avTime = getAverageTime(type=type)
-            print(f"The average time for {type} is {avTimes}")
+            print(f"The average time for {type} is {avTime}")
         elif b == 2:
             name = input("Name: ")
             type = input("Type: ")
             avTime = getAverageTime(name=name, type=type)
             print(f"The average time for {type} : {name} is {avTimes}")
+        elif b == 3:
+            main()
         else:
             print("Wrong input")
             main()
+    elif a == 2:
+        exit()
 
     else:
         print("Please enter 1 or 2")
