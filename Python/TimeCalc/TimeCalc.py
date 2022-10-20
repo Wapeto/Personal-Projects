@@ -19,6 +19,7 @@ def inputNewTime() -> Time:
 def saveTime(Time):
     with open('/home/josh/Documents/Code/Personal-Projects/Python/TimeCalc/Data/times.json', 'r+') as file:
         # Create a dictionary with the object's data
+        print(Time)
         data = {}
         data['type'] = Time.type
         data['name'] = Time.name
@@ -109,8 +110,10 @@ def main():
     # a = input("Do you want to add a new time or get time information ? (1-2)\n")
     sel, a = pick(['Enter new Time data', 'Search for a Time', 'Exit'], "What do you want to do ?", indicator=">>")
     if a == 0:
-        time = buildNewTime() if buildNewTime() != 'back' else main()
-        saveTime(time)
+        time = buildNewTime()# if buildNewTime() != 'back' else main()
+        if time == 'back':
+            main()
+        else : saveTime(time)
 
     elif a == 1:
         # b = input("Do you wish to search by name, type, or both ? (1-2-3)\n")

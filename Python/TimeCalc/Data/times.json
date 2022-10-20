@@ -29,6 +29,16 @@
             "type": "a",
             "name": "test",
             "timeSpent": 2345
+        },
+        {
+            "type": "Trip-Skate",
+            "name": "Home-Alt",
+            "timeSpent": 186.0
+        },
+        {
+            "type": "Trip-Tram",
+            "name": "HDF-University",
+            "timeSpent": 390.0
         }
     ]
 }

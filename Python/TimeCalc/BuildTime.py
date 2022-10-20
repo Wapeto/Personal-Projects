@@ -127,9 +127,7 @@ def buildNewTime() -> Time:
     timeUnit = rawTimeValue[-1]
 
     time = timeConvert(timeValue, timeUnit)
-
-
-
+    
     return Time(type, fValue, time)
 
 
