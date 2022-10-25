@@ -1,68 +1,379 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" href="survey_styles.css">
+  <head>
     <title>Desirability-Survey</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<body>
+    <!--* CSS -->
+    <link rel="stylesheet" href="survey_styles.css" />
+
+    <!--* FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+
+    <!--* Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Candal&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
     <h1 id="main_title">Survey</h1>
-    <p id="instructions">You will have to answer a series of questions about
-        how you’d like your “perfect partner” to be. 
-        Be as honnest as you can, this survey is 100% anonymous.</p>
+    <p id="instructions">
+      You will have to answer a series of questions about how you’d like your
+      “perfect partner” to be. Be as honnest as you can, this survey is 100%
+      anonymous.
+    </p>
 
     <div id="questions">
-        <ul id="question_lst">
-            <li id="qu_sex" class="question">
-                <p style="text-align: left; margin-left: 3%; margin-right:8%;" class="question_txt">Are you interested in : </p>
-                <input type="checkbox" id="men_chkb" class="checkbox sex" name="Men">
-                    <label for="men_chkb" class="label">Men</label>
-                <input type="checkbox" id="women_chkb" class="checkbox sex" name="Women">
-                    <label for="women_chkb" class="label">Women</label>
-                <input type="checkbox" id="othersex_chkb" class="checkbox sex"  name="Other">
-                    <label for="othersex_chkb" class="label">Other</label>
+      <ul id="question_lst">
+        <li id="qu_sex" class="question">
+          <span class="question-txt">Are you interested in :</span>
+          <ul class="list-sex">
+            <li class="item sex">
+              <span class="checkbox men">
+                <i class="fa-solid fa-check check-icon"></i>
+              </span>
+              <span class="item-text">Men</span>
             </li>
-            <li id="qu_height" class="question">
-                <p style="text-align: left; margin-left: 3%; margin-right:8%;" class="question_txt">What is your ideal hight for a partner :</p>
-                <input type="range" name="hight" id="hight_sldr" class="slider" min="100" max="230" oninput="rangeValue.innerText = this.value">
-                <p id="rangeValue" style="margin: auto 2%;">100</p>
+            <li class="item sex">
+              <span class="checkbox women">
+                <i class="fa-solid fa-check check-icon"></i>
+              </span>
+              <span class="item-text">Women</span>
             </li>
-
-            <li id="qu_haircol" class="question">
-                <p style="text-align: left; margin-left: 3%; margin-right: 8%;" id="haircol_txt" class="question_txt">What is your favorite hair color for a partner :</p>
-                <!-- <select name="hair_colors" id="haircol_slct" class="select" multiple>
-                    <option value="black">Black</option>
-                    <option value="brown">Brown</option>
-                    <option value="blond">Blond</option>
-                    <option value="chestnut">Chestnut</option>
-                    <option value="red">Red</option>
-                    <option value="other">Other</option>
-                </select> -->
-                <ul id="chkb_slct">
-                    <li>
-                        <input type="checkbox" id="black_chkb" class="checkbox" name="black">
-                            <label for="black_chkb">Black</label>
-                        <input type="checkbox" id="brown_chkb" class="checkbox" name="brown">
-                            <label for="brown_chkb">Brown</label>
-                        <input type="checkbox" id="blond_chkb" class="checkbox" name="blond">
-                            <label for="blond_chkb">Blond</label>
-                        <input type="checkbox" id="chest_chkb" class="checkbox" name="chestnut">
-                            <label for="chest_chkb">Chestnut</label>
-                        <input type="checkbox" id="red_chkb" class="checkbox" name="red">
-                            <label for="red_chkb">Red</label>
-                        <input type="checkbox" id="otherhair_chkb" class="checkbox" name="other">
-                            <label for="otherhair_chkb">Other</label>
-                    </li>
-                </ul>
-
-                <!-- <img src="images/tip.png" alt="Tip" id="tip_img" class="tip">
-                <div id="modaltip1" class="modal">
-                    <p>Use 'CTRL' and click to select multiple colors</p>
-                </div> -->
+            <li class="item sex">
+              <span class="checkbox other">
+                <i class="fa-solid fa-check check-icon"></i>
+              </span>
+              <span class="item-text">Other</span>
             </li>
-
-        </ul>
+          </ul>
+        </li>
+        <li id="qu_height" class="question">
+          <span class="question-text"
+            >What is your ideal hight for a partner :</span
+          >
+          <input
+            type="range"
+            name="hight"
+            id="hight_sldr"
+            class="slider"
+            min="100"
+            max="230"
+            oninput="heightValue.innerText = this.value"
+          />
+          <p id="heightValue" style="margin: auto 2%">100</p>
+        </li>
+        <li id="qu_haircol" class="question">
+          <span class="question-txt"
+            >What is your favorite hair color for a partner :</span
+          >
+          <div class="container select-btn-container" data-type="hair">
+            <div class="select-btn hair">
+              <span class="btn-text hair">Select Hair Color</span>
+              <span class="arrow-dwn">
+                <i class="fa-solid fa-chevron-down"></i>
+              </span>
+            </div>
+            <ul class="select-btn-list dropdown">
+              <li class="item hair">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">Black</span>
+              </li>
+              <li class="item hair">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">Brown</span>
+              </li>
+              <li class="item hair">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">Blond</span>
+              </li>
+              <li class="item hair">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">Chestnut</span>
+              </li>
+              <li class="item hair">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">Red</span>
+              </li>
+              <li class="item hair">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">Other</span>
+              </li>
+              <li class="item hair">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">Don't know/Dont care</span>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li id="qu_eyecol" class="question">
+          <span class="question-txt"
+            >What is your favorite eye color for a partner :</span
+          >
+          <div class="container select-btn-container" data-type="eye">
+            <div class="select-btn eye">
+              <span class="btn-text eye">Select Eye Color</span>
+              <span class="arrow-dwn">
+                <i class="fa-solid fa-chevron-down"></i>
+              </span>
+            </div>
+            <ul class="select-btn-list dropdown">
+              <li class="item eye">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">Brown</span>
+              </li>
+              <li class="item eye">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">Green</span>
+              </li>
+              <li class="item eye">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">Blue</span>
+              </li>
+              <li class="item eye">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">Grey</span>
+              </li>
+              <li class="item eye">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">Hazel</span>
+              </li>
+              <li class="item eye">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">Other</span>
+              </li>
+              <li class="item eye">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">Don't know/Dont care</span>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!--* Sports -->
+        <li class="question rate">
+          <span class="question-text">Rate how athletic you'd want your partner to be :</span>
+          <input
+            type="range"
+            name="hight"
+            id="hight_sldr"
+            class="slider"
+            min="0"
+            max="10"
+            value="0"
+            oninput="sportAmount.innerText = this.value"
+          />
+          <p id="sportAmount" style="margin: auto 2%">0</p>
+        </li>
+        <!--* Money -->
+        <li class="question rate">
+          <span class="question-text">Rate how rich you'd want your partner to be :</span>
+          <input
+            type="range"
+            name="hight"
+            id="hight_sldr"
+            class="slider"
+            min="0"
+            max="10"
+            value="0"
+            oninput="moneyAmount.innerText = this.value"
+          />
+          <p id="moneyAmount" style="margin: auto 2%">0</p>
+        </li>
+        <!--* Gamer -->
+        <li class="question rate">
+          <span class="question-text">Rate how much of a gamer you'd want your partner to be :</span>
+          <input
+            type="range"
+            name="hight"
+            id="hight_sldr"
+            class="slider"
+            min="0"
+            max="10"
+            value="0"
+            oninput="gamerAmount.innerText = this.value"
+          />
+          <p id="gamerAmount" style="margin: auto 2%">0</p>
+        </li>
+        <!--* Possessive -->
+        <li class="question rate">
+          <span class="question-text">Rate how possessive you'd want your partner to be :</span>
+          <input
+            type="range"
+            name="hight"
+            id="hight_sldr"
+            class="slider"
+            min="0"
+            max="10"
+            value="0"
+            oninput="possAmount.innerText = this.value"
+          />
+          <p id="possAmount" style="margin: auto 2%">0</p>
+        </li>
+        <!--* Honnest -->
+        <li class="question rate">
+          <span class="question-text">Rate how honnest you'd want your partner to be :</span>
+          <input
+            type="range"
+            name="hight"
+            id="hight_sldr"
+            class="slider"
+            min="0"
+            max="10"
+            value="0"
+            oninput="honnestAmount.innerText = this.value"
+          />
+          <p id="honnestAmount" style="margin: auto 2%">0</p>
+        </li>
+        <!--* Tactile -->
+        <li class="question rate">
+          <span class="question-text">Rate how tactile you'd want your partner to be :</span>
+          <input
+            type="range"
+            name="hight"
+            id="hight_sldr"
+            class="slider"
+            min="0"
+            max="10"
+            value="0"
+            oninput="tacAmount.innerText = this.value"
+          />
+          <p id="tacAmount" style="margin: auto 2%">0</p>
+        </li>
+        <!--* Religious -->
+        <li class="question rate">
+          <span class="question-text">Rate how religious you'd want your partner to be :</span>
+          <input
+            type="range"
+            name="hight"
+            id="hight_sldr"
+            class="slider"
+            min="0"
+            max="10"
+            value="0"
+            oninput="reliAmount.innerText = this.value"
+          />
+          <p id="reliAmount" style="margin: auto 2%">0</p>
+        </li>
+        <!--* Patient -->
+        <li class="question rate">
+          <span class="question-text">Rate how patient you'd want your partner to be :</span>
+          <input
+            type="range"
+            name="hight"
+            id="hight_sldr"
+            class="slider"
+            min="0"
+            max="10"
+            value="0"
+            oninput="patienteAmount.innerText = this.value"
+          />
+          <p id="patienteAmount" style="margin: auto 2%">0</p>
+        </li>
+        <!--* Artist -->
+        <li class="question rate">
+          <span class="question-text">Rate how much of an artist you'd want your partner to be :</span>
+          <input
+            type="range"
+            name="hight"
+            id="hight_sldr"
+            class="slider"
+            min="0"
+            max="10"
+            value="0"
+            oninput="artAmount.innerText = this.value"
+          />
+          <p id="artAmount" style="margin: auto 2%">0</p>
+        </li>
+        <!--* Introvert -->
+        <li class="question rate">
+          <span class="question-text">Rate how introvert you'd want your partner to be<br> 1 is very extravert, 10 is very introvert :</span>
+          <input
+            type="range"
+            name="hight"
+            id="hight_sldr"
+            class="slider"
+            min="0"
+            max="10"
+            value="0"
+            oninput="introAmount.innerText = this.value"
+          />
+          <p id="introAmount" style="margin: auto 2%">0</p>
+        </li>
+        <!--* Polyglote -->
+        <li class="question rate">
+          <span class="question-text">Rate how how important it is for you that your partner speaks multiple languages :</span>
+          <input
+            type="range"
+            name="hight"
+            id="hight_sldr"
+            class="slider"
+            min="0"
+            max="10"
+            value="0"
+            oninput="polyAmount.innerText = this.value"
+          />
+          <p id="polyAmount" style="margin: auto 2%">0</p>
+        </li>
+        <!--* Intelligence -->
+        <li class="question rate">
+          <span class="question-text">Rate how intelligent you'd want your partner to be :</span>
+          <input
+            type="range"
+            name="hight"
+            id="hight_sldr"
+            class="slider"
+            min="0"
+            max="10"
+            value="0"
+            oninput="intelliAmount.innerText = this.value"
+          />
+          <p id="intelliAmount" style="margin: auto 2%">0</p>
+        </li>
+      </ul>
     </div>
-</body>
+
+    <span class="submitBtn">Submit</span>
+
+
+
+    <!--* JavaScript -->
+    <script src="survey.js"></script>
+    <script src="analyse.js"></script>
+
+  </body>
 </html>

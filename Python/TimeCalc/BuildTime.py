@@ -104,12 +104,12 @@ def buildNewTime() -> Time:
     elif index == 1:  # Task
         type = 'Task'
 
-        task = input("Enter the name of the task :\n").lower()
+        task = input("Enter the name of the task :\n")
 
     elif index == 2: # Chores
         type = 'Chore'
 
-        chore = input("Enter the name of the chore :\n").lower()
+        chore = input("Enter the name of the chore :\n")
     elif index == 4: #Back
         return 'back'
 
@@ -143,6 +143,17 @@ def timeConvert(val:str, unit:str) -> int:
     """
     if val.isdigit():
         val = int(val)
+    elif "." in val:
+        val = val.split(".")
+        if unit ==  'h':
+            res = int(val[0]) * 3600 + int(val[1])
+        elif unit == 'm':
+            res = int(val[0]) * 60 + int(val[1])
+        elif unit == 's':
+            res = val
+        else :
+            print("Enter a correct time unit")
+        return res
     else:
         try:
             val = float(val)

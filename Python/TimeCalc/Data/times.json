@@ -39,6 +39,21 @@
             "type": "Trip-Tram",
             "name": "HDF-University",
             "timeSpent": 390.0
+        },
+        {
+            "type": "Chore",
+            "name": "Big-Dishes",
+            "timeSpent": 3000
+        },
+        {
+            "type": "Trip-Skate",
+            "name": "Alt-Home",
+            "timeSpent": 221
+        },
+        {
+            "type": "Trip-Tram",
+            "name": "Alt-HDF",
+            "timeSpent": 156
         }
     ]
 }
