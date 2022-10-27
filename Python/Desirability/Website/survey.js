@@ -1,7 +1,8 @@
-// const hairItems = document.querySelectorAll(".item.hair");
-//     sexItems = document.querySelectorAll(".item.sex")
-//     selectEyeBtn = document.querySelector(".select-btn.eye")
-//     eyeItems = document.querySelectorAll(".item.eye");
+const PORT = 8989
+const express = require('express')
+
+const app = express()
+
 
 const selectBtnsData = {
     "hair": [],
@@ -123,8 +124,8 @@ submitBtn.addEventListener("click", () =>{
         inputDataset[datasetKeys[i+4]] = slidersData[i]
     }
 
-    // console.log(slidersData)
     console.log(inputDataset)
-    // window.localStorage.setItem('data', JSON.stringify(inputDataset))``
 })
+
+
 
