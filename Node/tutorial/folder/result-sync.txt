@@ -1,0 +1,9 @@
+Here is the result of all this hard work : 
+ This is the first txt file 
+ This is the second txt fileHere is the result of all this hard work : 
+This is the first txt file 
+This is the second txt fileHere is the result of all this hard work : 
+This is the first txt file 
+This is the second txt fileHere is the result of all this hard work : 
+This is the first txt file 
+This is the second txt file
