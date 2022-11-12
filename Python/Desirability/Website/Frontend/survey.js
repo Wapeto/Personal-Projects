@@ -6,11 +6,11 @@ const selectBtnsData = {
 const inputDataset = {
     "sex": "",
     "size": 0,
-    "hair_color": 0,
-    "eye_color": 0,
+    "haircol": 0,
+    "eyecol": 0,
     "sport": 0,
     "money": 0,
-    "play_videogame": 0,
+    "playgame": 0,
     "possessive": 0,
     "honesty": 0,
     "tactile": 0,
@@ -20,6 +20,25 @@ const inputDataset = {
     "introvert": 0,
     "polyglote": 0,
     "intelligent": 0
+}
+
+const testDict = {
+    "sex": 12,
+    "size": 0,
+    "hair_color": ["Don't know/Dont care"],
+    "eye_color": ["Don't know/Dont care"],
+    "sport": 0,
+    "money": 0,
+    "play_videogame": 0,
+    "possessive": 0,
+    "honesty": 0,
+    "tactile": 0,
+    "religious": 44,
+    "patient": 0,
+    "artist": "Hey",
+    "introvert": 0,
+    "polyglote": 0,
+    "intelligent": 0,
 }
 
 const submitBtn = document.querySelector(".submitBtn")
@@ -91,7 +110,8 @@ submitBtn.addEventListener("click", () =>{
         return +`${sexStr}`
     })()
     inputDataset[datasetKeys[1]] = (()=>{
-        return document.querySelector("#heightValue").textContent
+        const size = document.querySelector("#heightValue").textContent
+        return parseInt(size)
     })()
     inputDataset[datasetKeys[2]] = (()=>{
         let hairLst = []
@@ -115,51 +135,19 @@ submitBtn.addEventListener("click", () =>{
         slidersData.push(sldr.value)
     })
     for (let i = 0; i < slidersData.length; i++) {
-        inputDataset[datasetKeys[i+4]] = slidersData[i]
+        inputDataset[datasetKeys[i+4]] = parseInt(slidersData[i])
     }
     
     console.log(inputDataset)
 
-    doRequest('/Website/survey.html', inputDataset)
+    fetch('http://localhost:3000/post-dict/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(inputDataset)
+            // body: JSON.stringify(testDict)
+    })
 
 })
-
-async function doRequest(url, data) {
-
-    let res = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    });
-
-    if (res.ok) {
-
-        // let text = await res.text();
-        // return text;
-
-        let ret = await res.json();
-        return JSON.parse(ret.data);
-
-    } else {
-        return `HTTP error: ${res.status}`;
-    }
-}
-
-doRequest().then(data => {
-    console.log(data);
-});
-
-function httpGetAsync(theUrl, callback)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() { 
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.responseText);
-    }
-    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-    xmlHttp.send(null);
-}
-
-
