@@ -48,6 +48,15 @@ document.querySelectorAll(".item").forEach(elm => elm.addEventListener("click", 
     elm.querySelector(".checkbox").classList.toggle("checked")
 }))
 
+document.body.addEventListener('click', e =>{
+    if (!e.target.classList.contains('select-btn') && !e.target.closest('.select-btn-list')){
+        document.querySelectorAll('.select-btn').forEach(elm => {
+            if(elm.classList.contains('open')){
+                elm.classList.remove('open')
+            }
+        })
+    }
+})
 
 
 document.querySelectorAll(".select-btn").forEach(elm => elm.addEventListener("click", e =>{ 
@@ -61,6 +70,7 @@ document.querySelectorAll(".select-btn").forEach(elm => elm.addEventListener("cl
     else
     e.currentTarget.classList.remove("open")    
 }))
+
 
 
 document.querySelectorAll(".select-btn-container").forEach(btn => {
@@ -88,7 +98,7 @@ document.querySelectorAll(".select-btn-container").forEach(btn => {
 })
 
 
-submitBtn.addEventListener("click", () =>{
+submitBtn.onclick = ()=>{
     const questions = document.querySelectorAll(".question")
     const datasetKeys = Object.keys(inputDataset)
     
@@ -150,4 +160,4 @@ submitBtn.addEventListener("click", () =>{
             // body: JSON.stringify(testDict)
     })
 
-})
+}

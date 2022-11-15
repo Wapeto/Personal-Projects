@@ -1,3 +1,6 @@
+#include <stdio.h>
+
 int main() {
-    printf("Hello World!");
+    printf("Weedidit !");
+    return 0;
 }
