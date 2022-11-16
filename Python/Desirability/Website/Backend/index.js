@@ -53,17 +53,9 @@ app.post('/post-dict/', (req, res) => {
 })
 
 
-app.get('/get_results', (req, res) => {
-    let tot = 0
-    let avSize = getDataFromDatabase('size', (res) => {
-        res.forEach(elm => {
-            tot += elm
-        })
-        console.log(tot)
-        tot /= res.length
-    })
-    // res.send('<p>Name :' + req.query['name_in']+'</p>')
-    res.json(tot)
+app.get('/get_results', async (req, res) => {
+    const sizes = await selectFrom('dataset', ['size'])
+    res.json(sizes.reduce((previousValue, currentValue) => previousValue + currentValue.size, 0) / sizes.length)
 })
 
 app.listen(port, () => {
@@ -164,34 +156,22 @@ function insertInto(table, dict) {
     });
 };
 
-function selectFrom(table, args = [], where = [], callback) {
-    let sql = `SELECT ${(args.length == 0) ? "*" : args.join()} FROM ${table}`;
-    if (where.length != 0) {
+function selectFrom(table, args = [], where = []) {
+    let sql = `SELECT ${(args.length === 0) ? "*" : args.join()} FROM ${table}`;
+    if (where.length !== 0) {
         sql += ` WHERE ${where[0]} = ${where[1]}`;
     };
-    con.query(sql, function (err, result, fields) {
-        if (err) throw err;
-            
-        callback(JSON.stringify(result));
+
+    return new Promise((resolve, reject) => {
+        con.query(sql, function (err, result, fields) {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result)
+            }
+        });
     });
 };
-
-function getDataFromDatabase(rowName, callback) {
-    let buffer = '{}\[\]'
-    let resArr = []
-    selectFrom("dataset", [rowName], [], (result) =>{
-        result = result.split(',');
-        result.forEach(elm => {
-            for (let i = 0; i < buffer.length; i++) {
-                elm = elm.replace(buffer[i], '')
-                elm = elm.replace(`"${rowName}":`, '')
-            }
-            console.log(elm)
-            resArr.push(parseInt(elm))
-        })
-        callback(resArr)
-    })
-}
 
 
 
