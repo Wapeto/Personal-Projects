@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Chillax';
+    src:  url('fonts/Chillax-Variable.woff') format('woff'),
+    url('fonts/Chillax-Variable.ttf') format('truetype');
+}
+
+*{
+    /* font-family: 'Righteous', 'Chillax', Helvetica, sans-serif; */
+    font-family: 'Candal', sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+
+body {
+    background-color:#9776F5;
+}

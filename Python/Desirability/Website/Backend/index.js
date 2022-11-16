@@ -36,7 +36,8 @@ const dictModel = {
 app.use(express.json());
 
 //* Verify that the client accessing is me :
-app.use(cors({origin: 'http://127.0.0.1:5501'}))
+// app.use(cors({origin: 'http://127.0.0.1:5501'}))
+app.use(cors())
 
 app.post('/post-dict/', (req, res) => {
     const dict = req.body;
@@ -49,6 +50,20 @@ app.post('/post-dict/', (req, res) => {
     }else{
         console.log('Error in the dictionary')
     }
+})
+
+
+app.get('/get_results', (req, res) => {
+    let tot = 0
+    let avSize = getDataFromDatabase('size', (res) => {
+        res.forEach(elm => {
+            tot += elm
+        })
+        console.log(tot)
+        tot /= res.length
+    })
+    // res.send('<p>Name :' + req.query['name_in']+'</p>')
+    res.json(tot)
 })
 
 app.listen(port, () => {
@@ -118,24 +133,24 @@ function checkDictIntegrity(dict){
 
     if (tests === dictKeys.length){
         console.log('VALID DICTIONARY !')
-        // insertInto('dataset', {
-        //     'sex': `${dict["sex"]}`,
-        //     'size': `${dict["size"]}`,
-        //     'haircol': `[${dict["haircol"]}]`,
-        //     'eyecol': `[${dict["eyecol"]}]`,
-        //     'sport': `${dict["sport"]}`,
-        //     'money': `${dict["money"]}`,
-        //     'playgame': `${dict["playgame"]}`,
-        //     'possessive': `${dict["possessive"]}`,
-        //     'honesty': `${dict["honesty"]}`,
-        //     'tactile': `${dict["tactile"]}`,
-        //     'religious': `${dict["religious"]}`,
-        //     'patient': `${dict["patient"]}`,
-        //     'artist': `${dict["artist"]}`,
-        //     'introvert': `${dict["introvert"]}`,
-        //     'polyglote': `${dict["polyglote"]}`,
-        //     'intelligent': `${dict["intelligent"]}`,
-        // })
+        insertInto('dataset', {
+            'sex': `${dict["sex"]}`,
+            'size': `${dict["size"]}`,
+            'haircol': `\'["${dict["haircol"]}"]\'`,
+            'eyecol': `\'["${dict["eyecol"]}"]\'`,
+            'sport': `${dict["sport"]}`,
+            'money': `${dict["money"]}`,
+            'playgame': `${dict["playgame"]}`,
+            'possessive': `${dict["possessive"]}`,
+            'honesty': `${dict["honesty"]}`,
+            'tactile': `${dict["tactile"]}`,
+            'religious': `${dict["religious"]}`,
+            'patient': `${dict["patient"]}`,
+            'artist': `${dict["artist"]}`,
+            'introvert': `${dict["introvert"]}`,
+            'polyglote': `${dict["polyglote"]}`,
+            'intelligent': `${dict["intelligent"]}`,
+        })
     }else{
         console.log('ALTERED DICTIONARY !')
     }
@@ -149,37 +164,34 @@ function insertInto(table, dict) {
     });
 };
 
+function selectFrom(table, args = [], where = [], callback) {
+    let sql = `SELECT ${(args.length == 0) ? "*" : args.join()} FROM ${table}`;
+    if (where.length != 0) {
+        sql += ` WHERE ${where[0]} = ${where[1]}`;
+    };
+    con.query(sql, function (err, result, fields) {
+        if (err) throw err;
+            
+        callback(JSON.stringify(result));
+    });
+};
 
-
-function addDataset(datasetTable){
-    const keys = Object.keys(datasetTable)
-    con.connect(function(err){
-        if (err){
-            console.log(err)
-        }
-        console.log('Connected to database !')
-        var sql = (function() {
-            let command = `INSERT INTO dataset (`
-            keys.forEach(k =>{
-                command += k + ', '
-            })
-            command = command.slice(0, -2) + ') VALUES ('
-            keys.forEach(k =>{
-                command += datasetTable[k] + ', '
-            })
-            command = command.slice(0, -2) + ')'
-            return command;
-        })();
-        console.log(sql)
-        con.query(sql, function(err, result){
-            console.log('pushing results...')
-            if (err){
-                console.log('aie...\n\n')
-                console.log(err)
+function getDataFromDatabase(rowName, callback) {
+    let buffer = '{}\[\]'
+    let resArr = []
+    selectFrom("dataset", [rowName], [], (result) =>{
+        result = result.split(',');
+        result.forEach(elm => {
+            for (let i = 0; i < buffer.length; i++) {
+                elm = elm.replace(buffer[i], '')
+                elm = elm.replace(`"${rowName}":`, '')
             }
-            else{
-                console.log('sucess ! : 1 new data has been inserted')
-            }
+            console.log(elm)
+            resArr.push(parseInt(elm))
         })
+        callback(resArr)
     })
 }
+
+
+
