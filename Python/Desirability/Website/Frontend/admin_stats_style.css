@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'Chillax';
+    src:  url('fonts/Chillax-Variable.woff') format('woff'),
+    url('fonts/Chillax-Variable.ttf') format('truetype');
+}
+
+*{
+    /* font-family: 'Righteous', 'Chillax', Helvetica, sans-serif; */
+    font-family: 'Candal', sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+
+body {
+    background-color:#9776F5;
+}
+
+.main_title{
+    color: #FFA600;
+    width: 100%;
+    margin: auto;
+    font-size: 4em;
+}
+
+.text{
+    color: #fff;
+    font-size: 1.1em;
+}
+
+.stats{
+    display: block;
+    position: relative;
+    background-color: #7055BE;
+    border-radius: 20px;
+    padding: 15px;
+    align-items: center;
+    margin: 5% auto;
+    width: 80%;
+    height: 430px;
+    color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    font-size: 1.3em;
+}
+
+.stat_container{
+    display: flex;
+}
+
+.container{
+    display: flex;
+    padding-left: 3%;
+    margin: 10px 10px;
+    width: 70%;
+    background-color: #9776F5;
+    border-radius: 7px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    transition: all 1s ease-out;
+    
+    /* align-items: flex-start; */
+}
+
+.container:hover{
+    background-color: #6725aa;
+}
+
+.get{
+    margin-left: 5%;
+}

@@ -48,6 +48,8 @@ document.querySelectorAll(".item").forEach(elm => elm.addEventListener("click", 
     elm.querySelector(".checkbox").classList.toggle("checked")
 }))
 
+document.querySelectorAll(".slider").forEach(elm => elm.value = 0)
+
 document.body.addEventListener('click', e =>{
     if (!e.target.classList.contains('select-btn') && !e.target.closest('.select-btn-list')){
         document.querySelectorAll('.select-btn').forEach(elm => {
@@ -160,4 +162,12 @@ submitBtn.onclick = ()=>{
             // body: JSON.stringify(testDict)
     })
 
+    // TODO: Make this shit work
+    fetch('http://localhost:3000/dict-validation/')
+        .then(async response => {
+            let state = await response.text()
+            console.log(state)
+        })
+        .catch(err => console.log(err))
+        
 }

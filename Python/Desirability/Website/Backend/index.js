@@ -33,11 +33,17 @@ const dictModel = {
     "intelligent": 0
 }
 
+const modelKeys = Object.keys(dictModel)
+
 app.use(express.json());
 
 //* Verify that the client accessing is me :
 // app.use(cors({origin: 'http://127.0.0.1:5501'}))
 app.use(cors())
+
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`)
+})
 
 app.post('/post-dict/', (req, res) => {
     const dict = req.body;
@@ -45,28 +51,104 @@ app.post('/post-dict/', (req, res) => {
         Object.keys(dict).every(key => Object.keys(dictModel).includes(key))) {
             console.log('Dict keys OK')
             checkDictIntegrity(dict)
-        // Vérifie si le dictionnaire passé en paramètre possède bien les mêmes clefs
-        // ... faire le traitement sur le dico en pensant à bien vérifier chaque type de donnée et y effectuer des controles (comme la taille par exemple)
     }else{
         console.log('Error in the dictionary')
     }
 })
 
+//?  ---------GET STATS---------
+app.get('/get_stats/men', async (req, res) => {
+    let stat_list = []
+    // * Height
+    const sizes = await selectFrom('dataset', ['size'], ['sex', '1'])
+    sizes.forEach((elm, index) => {sizes[index] = elm.size})
 
-app.get('/get_results', async (req, res) => {
-    const sizes = await selectFrom('dataset', ['size'])
-    res.json(sizes.reduce((previousValue, currentValue) => previousValue + currentValue.size, 0) / sizes.length)
+    // * Hair color
+    let hairs = await selectFrom('dataset', ['haircol'], ['sex', '1'])
+    hairs.forEach((elm, index) => {
+        hairs[index] = elm.haircol
+        hairs[index] = hairs[index].slice(2, -2).split(',')
+    })
+    hairs = hairs.flat(1)
+    hairs = sortStringTendency(hairs)[0][0]
+
+    // * Eye color
+    let eyes = await selectFrom('dataset', ['eyecol'], ['sex', '1'])
+    eyes.forEach((elm, index) => {
+        eyes[index] = elm.eyecol
+        eyes[index] = eyes[index].slice(2, -2).split(',')
+    })
+    eyes = eyes.flat(1)
+    eyes = sortStringTendency(eyes)[0][0]
+
+    stat_list.push(average(sizes))
+    stat_list.push(hairs)
+    stat_list.push(eyes)
+
+    //* Sliders
+    for (let i = 4; i < Object.keys(dictModel).length;i++){
+        let data = await selectFrom('dataset', [modelKeys[i]], ['sex', '1'])
+        data.forEach((elm, index) => {
+            let jsonDict = JSON.parse(JSON.stringify(elm))
+            let key = Object.keys(jsonDict)
+            data[index] = jsonDict[key]
+        })
+        stat_list.push(average(data))
+    }
+    
+    console.log(stat_list)
+    res.send(stat_list)
 })
 
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`)
+app.get('/get_stats/women', async (req, res) => {
+    let stat_list = []
+    // * Height
+    const sizes = await selectFrom('dataset', ['size'], ['sex', '2'])
+    sizes.forEach((elm, index) => {sizes[index] = elm.size})
+
+    // * Hair color
+    let hairs = await selectFrom('dataset', ['haircol'], ['sex', '2'])
+    hairs.forEach((elm, index) => {
+        hairs[index] = elm.haircol
+        hairs[index] = hairs[index].slice(2, -2).split(',')
+    })
+    hairs = hairs.flat(1)
+    hairs = sortStringTendency(hairs)[0][0]
+
+    // * Eye color
+    let eyes = await selectFrom('dataset', ['eyecol'], ['sex', '2'])
+    eyes.forEach((elm, index) => {
+        eyes[index] = elm.eyecol
+        eyes[index] = eyes[index].slice(2, -2).split(',')
+    })
+    eyes = eyes.flat(1)
+    eyes = sortStringTendency(eyes)[0][0]
+
+    stat_list.push(average(sizes))
+    stat_list.push(hairs)
+    stat_list.push(eyes)
+
+    //* Sliders
+    for (let i = 4; i < Object.keys(dictModel).length;i++){
+        let data = await selectFrom('dataset', [modelKeys[i]], ['sex', '2'])
+        data.forEach((elm, index) => {
+            let jsonDict = JSON.parse(JSON.stringify(elm))
+            let key = Object.keys(jsonDict)
+            data[index] = jsonDict[key]
+        })
+        stat_list.push(average(data))
+    }
+    
+    console.log(stat_list)
+    res.send(stat_list)
 })
+
 
 function checkDictIntegrity(dict){
     let tests = 0
     const dictKeys = Object.keys(dict)
     //* sex TEST
-    if (typeof dict["sex"] === 'number' && dict['sex'].toString.length <= 3){
+    if (typeof dict["sex"] === 'number' && dict['sex'].toString.length <= 3 && dict["sex"] != 0){
         console.log('sex OK')
         tests ++
     }else {
@@ -143,8 +225,16 @@ function checkDictIntegrity(dict){
             'polyglote': `${dict["polyglote"]}`,
             'intelligent': `${dict["intelligent"]}`,
         })
+
+        // TODO: Make this shit work
+        app.get('/dict-validation', (req, res) => {
+            res.send('Valid')
+        })
     }else{
         console.log('ALTERED DICTIONARY !')
+        app.get('/dict-validation', (req, res) => {
+            res.send('Invalid')
+        })
     }
 }
 
@@ -173,5 +263,56 @@ function selectFrom(table, args = [], where = []) {
     });
 };
 
+function average(array){
+    let total = 0;
+    array.forEach(elm => {
+        total += elm
+    });
+    total /= array.length
+    return total.toFixed(1)
+}
 
+function sortStringTendency(array){
+    let sortedList = [];
+    for(let i = 0; i < array.length; i++){
+        let counter = 0;
+        for(let y = 0; y<array.length; y++){
+            if(array[i]===array[y]){
+                counter ++;
+            }
+        }
+        let tup = [array[i], counter]
+        if (!isIn(sortedList, tup)){
+            sortedList.push(tup)
+        }
+    }
+    while (!isSorted(sortedList)){
+        for(let i=0;i<sortedList.length-1; i++){
+            if(sortedList[i][1]<sortedList[i+1][1]){
+                let temp = sortedList[i]
+                sortedList[i] = sortedList[i+1]
+                sortedList[i+1] = temp
+            }
+        }
+    }
+    return sortedList
+    
+}
 
+function isIn(array, elm){
+    for (thing of array){
+        if(JSON.stringify(elm)==JSON.stringify(thing)){
+            return true
+        }
+    }
+    return false
+}
+
+function isSorted(array){
+    for(let i=0; i<array.length-1; i++){
+        if(array[i][1]<array[i+1][1]){
+            return false
+        }
+    }
+    return true
+}
